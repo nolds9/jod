@@ -1,14 +1,14 @@
 class Listing < ActiveRecord::Base
 	belongs_to :user
 
-	has_many :contact_information
-	has_many :aircraft_specs
+	has_many :details
+	has_many :specs
 
-	accepts_nested_attributes_for :contact_information,
+	accepts_nested_attributes_for :details,
   															reject_if: proc { |attributes| attributes['name'].blank? },
   															allow_destroy: true
- 	accepts_nested_attributes_for :aircraft_specs,
-  															reject_if: proc { |attributes| attributes['ask_price'].blank? },
+ 	accepts_nested_attributes_for :specs,
+  															reject_if: proc { |attributes| attributes['status'].blank? },
   															allow_destroy: true
 
   validates :title, :description, :image, presence: true

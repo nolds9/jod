@@ -16,39 +16,14 @@ ActiveRecord::Schema.define(version: 20150414055414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aircraft_specs", force: :cascade do |t|
-    t.string   "ask_price"
-    t.string   "verified"
-    t.string   "aftt"
-    t.string   "total_landings"
-    t.text     "engine"
-    t.text     "avionics"
-    t.string   "year_painted"
-    t.text     "exterior"
-    t.text     "interior"
-    t.text     "inspection_status"
-    t.string   "registration"
-    t.text     "condition"
-    t.string   "status"
-    t.integer  "listing_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "aircraft_specs", ["listing_id"], name: "index_aircraft_specs_on_listing_id", using: :btree
-
-  create_table "contact_information", force: :cascade do |t|
+  create_table "details", force: :cascade do |t|
     t.string   "name"
-    t.string   "company"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "website"
     t.integer  "listing_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "contact_information", ["listing_id"], name: "index_contact_information_on_listing_id", using: :btree
+  add_index "details", ["listing_id"], name: "index_details_on_listing_id", using: :btree
 
   create_table "listings", force: :cascade do |t|
     t.string   "title"
@@ -69,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150414055414) do
     t.datetime "image_updated_at"
   end
 
+  create_table "specs", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "specs", ["listing_id"], name: "index_specs_on_listing_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -87,6 +71,6 @@ ActiveRecord::Schema.define(version: 20150414055414) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "aircraft_specs", "listings"
-  add_foreign_key "contact_information", "listings"
+  add_foreign_key "details", "listings"
+  add_foreign_key "specs", "listings"
 end

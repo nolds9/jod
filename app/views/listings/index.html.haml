@@ -1,9 +1,9 @@
-- @recipe.each_slice(3) do |recipes|
+- @listing.each_slice(3) do |listings|
 	.row
-		- recipes.each do |recipe|
+		- listings.each do |listing|
 			.col-md-4
-				.recipe
+				.listing
 					.image_wrapper
-						= link_to recipe do
-							= image_tag recipe.image.url(:medium)
-					%h2= link_to recipe.title, recipe
+						= link_to listing do
+							= image_tag listing.image.url(:medium)
+					%h2= link_to listing.title, listing

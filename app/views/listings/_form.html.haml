@@ -14,26 +14,26 @@
 		= f.input :jet_model, input_html: { class: 'form-control' }
 		= f.input :serial_number, input_html: { class: 'form-control' }
 		= f.input :location, input_html: { class: 'form-control' }
-		= f.input :tags, input_html: { class: 'form-control' }	
-		= f.input :price, input_html: { class: 'form-control' }						
+		= f.input :tags, input_html: { class: 'form-control' }
 		= f.input :description, input_html: { class: 'form-control' }
+		= f.input :price, input_html: { class: 'form-control' }
 		= f.input :image, input_html: { class: 'form-control' }
 
 		.row
 			.col-md-6
-				%h3 contact_information
-				#contact_information
-					= f.simple_fields_for :contact_informations do |information|
-						= render 'contact_information_fields', f: information
+				%h3 Contact Details
+				#details
+					= f.simple_fields_for :details do |detail|
+						= render 'detail_fields', f: detail
 					.links
-						= link_to_add_association 'Add contact_information', f, :contact_information, class: "btn btn-default add-button"
+						= link_to_add_association 'Add detail', f, :details, class: "btn btn-default add-button"
 
 			.col-md-6
-				%h3 aircraft_specs
-				#aircraft_specs
-					= f.simple_fields_for :aircraft_specs do |aircraft_spec|
-						= render 'aircraft_spec_fields', f: aircraft_spec
+				%h3 specs
+				#specs
+					= f.simple_fields_for :specs do |spec|
+						= render 'spec_fields', f: spec
 					.links
-						= link_to_add_association 'Add Step', f, :aircraft_specs, class: "btn btn-default add-button"
+						= link_to_add_association 'Add Step', f, :specs, class: "btn btn-default add-button"
 
 	= f.button :submit, class: "btn btn-primary"

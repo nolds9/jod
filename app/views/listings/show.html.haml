@@ -10,18 +10,18 @@
 
 	.row
 		.col-md-6
-			#contact_information
-				%h2 contact_information
+			#details
+				%h2 Contact Details
 				%ul
-					- @listing.contact_information.each do |information|
-						%li= information.name
+					- @listing.details.each do |detail|
+						%li= detail.name
 
 		.col-md-6
-			#aircraft_specs
-				%h2 Aircraft Specs
+			#specs
+				%h2 Specs
 				%ul
-					- @listing.aircraft_specs|each do |aircraft_specs|
-						%li= aircraft_specs.ask_price
+					- @listing.specs.each do |spec|
+						%li= spec.status
 
 
 	.row
