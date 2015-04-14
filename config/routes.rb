@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  # get 'listings/index'
+
+  # get 'listings/show'
+
+  # get 'listings/new'
+
+  # get 'home/index'
+  resources :listings
 
   devise_for :users
   root to: "home#index"
