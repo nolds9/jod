@@ -1,0 +1,32 @@
+.main_content
+	#listing_top.row
+		.col-md-4
+			= image_tag @listing.image.url(:medium), class: "listing_image"
+		.col-md-8
+			#listing_info
+				%h1= @listing.title
+				%p.description= @listing.description
+			
+
+	.row
+		.col-md-6
+			#contact_information
+				%h2 contact_information
+				%ul
+					- @listing.contact_information.each do |information|
+						%li= information.name
+
+		.col-md-6
+			#aircraft_specs
+				%h2 Aircraft Specs
+				%ul
+					- @listing.aircraft_specs|each do |aircraft_specs|
+						%li= aircraft_specs.ask_price
+
+
+	.row
+		.col-md-12
+			= link_to "Back", root_path, class: "btn btn-default"
+			- if user_signed_in?
+				= link_to "Edit", edit_listing_path, class: "btn btn-default"
+				= link_to "Delete", listing_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"

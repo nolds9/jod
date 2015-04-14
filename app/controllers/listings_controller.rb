@@ -3,18 +3,18 @@ class listingsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@listing = listing.all.order("created_at DESC")
+		@listing = Listing.all.order("created_at DESC")
 	end
 
 	def show
 	end
 
 	def new
-		@listing = listing.new
+		@listing = Listing.new
 	end
 
 	def create
-		@listing = listing.new(listing_params)
+		@listing = Listing.new(listing_params)
 
 		if @listing.save
 			redirect_to @listing, notice: "Successfully created new listing"
@@ -42,10 +42,12 @@ class listingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :year, :make :jet_model, :serial_number:description, :image, ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
+		params.require(:listing).permit(:title, :year, :make, :jet_model, :serial_number, :location, :description, :tags, :image, :price)
 	end
 
 	def find_listing
 		@listing = Listing.find(params[:id])
 	end
 end
+
+# ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
