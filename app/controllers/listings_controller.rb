@@ -1,4 +1,4 @@
-class listingsController < ApplicationController
+class ListingsController < ApplicationController
 	before_action :find_listing, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show]
 

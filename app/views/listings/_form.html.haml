@@ -21,19 +21,19 @@
 
 		.row
 			.col-md-6
-				%h3 Ingredients
-				#ingredients
-					= f.simple_fields_for :ingredients do |ingredient|
-						= render 'ingredient_fields', f: ingredient
+				%h3 contact_information
+				#contact_information
+					= f.simple_fields_for :contact_information do |contact_information|
+						= render 'contact_information_fields', f: contact_information
 					.links
-						= link_to_add_association 'Add Ingredient', f, :ingredients, class: "btn btn-default add-button"
+						= link_to_add_association 'Add contact_information', f, :ingredients, class: "btn btn-default add-button"
 
 			.col-md-6
-				%h3 Directions
-				#directions
-					= f.simple_fields_for :directions do |direction|
-						= render 'direction_fields', f: direction
+				%h3 aircraft_specs
+				#aircraft_specs
+					= f.simple_fields_for :aircraft_specs do |aircraft_spec|
+						= render 'aircraft_spec_fields', f: aircraft_spec
 					.links
-						= link_to_add_association 'Add Step', f, :directions, class: "btn btn-default add-button"
+						= link_to_add_association 'Add Step', f, :aircraft_specs, class: "btn btn-default add-button"
 
 	= f.button :submit, class: "btn btn-primary"
