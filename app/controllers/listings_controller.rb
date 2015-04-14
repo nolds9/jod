@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :year, :make, :jet_model, :serial_number, :location, :description, :tags, :image, :price)
+		params.require(:listing).permit(:title, :year, :make, :jet_model, :serial_number, :location, :description, :tags, :image, :price, contact_information_attributes: [:id, :name, :company, :email, :phone_number, :website, :_destroy], aircraft_specs_attributes: [:id, :ask_price, :verified, :aftt, :total_landings, :engine, :avionics, :year_painted, :exterior, :interior, :inspection_status, :registration, :condition, :status, :_destroy])
 	end
 
 	def find_listing
@@ -50,4 +50,4 @@ class ListingsController < ApplicationController
 	end
 end
 
-# ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
+# ingredients_attributes: [:id, :name, :_destroy], aircraft_specs_attributes: [:id, :step, :_destroy])
