@@ -4,8 +4,8 @@
 			= image_tag @listing.image.url(:medium), class: "listing_image"
 		.col-md-8
 			#listing_info
-				%h1= @listing.title
-				%p.description= @listing.description
+				%h1= simple_format (@listing.title)
+				%p= @listing.description
 			
 
 	.row
